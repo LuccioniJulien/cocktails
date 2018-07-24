@@ -20,7 +20,7 @@ class _CategoriesList extends State<Categories> {
   }
 
   _getCategories() async{
-    var result = await Category.fetchPost();
+    final result = await Category.fetchCategory();
     setState(() { names = result; });
   }
 
