@@ -20,11 +20,18 @@ class _CocktailDetails extends State<CocktailDetails> {
   }
 
   _getCocktailDetails() async{
-    await widget.drink.updateDrink();
-    for (var item in widget.drink.tags) {
-      print(item);
+    try 
+    {
+      if(!widget.drink.isUpdated)
+      {
+        await widget.drink.updateDrink();
+      }
+      setState(() { drink = widget.drink; });
+    } 
+    catch (e) 
+    {
+
     }
-    setState(() { drink = widget.drink; });
   }
 
   @override
@@ -32,15 +39,21 @@ class _CocktailDetails extends State<CocktailDetails> {
   return new Scaffold(
       appBar: new AppBar(
         title: new Text(widget.drink.name),
+        
       ),
        body: drink != null ?
-       ListView.builder(
-          itemBuilder: (BuildContext context, int index) =>
-            new Chip(
-              label: new Text(drink?.tags[index]),
+       new Wrap(
+         children: drink.tags.map((f){
+           return  new Padding(
+             padding: EdgeInsets.all(5.0),
+            child: new Chip(
+              label: new Text(f),
+              backgroundColor: Colors.blue,
             ),
-          itemCount: drink?.tags?.length,
-        ):
+           );
+         }).toList()
+       )
+        :
         new Text("loading")
     );
   }

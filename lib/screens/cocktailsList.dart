@@ -42,7 +42,7 @@ class _CocktailsList extends State<Cocktail> {
                       onTap: (){
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => CocktailDetails(drink:drinks[index])),
+                          MaterialPageRoute(builder: (context) => CocktailDetails(drink:drinks[index],))
                         );
                       }
                 ),

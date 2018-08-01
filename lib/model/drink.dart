@@ -6,6 +6,7 @@ class Drink {
   String name;
   String urlImage;
   String instruction;
+  bool isUpdated = false;
   List<String> tags = new List<String>();
   Map<String,String> ingerdients = new Map<String,String>();
 
@@ -33,16 +34,16 @@ class Drink {
       instruction = attributes["strInstructions"];
 
       if(attributes['strCategory']!=null){
-         tags.add(attributes['strCategory']);
+         this.tags.add(attributes['strCategory']);
       }
       if(attributes['strIBA']!=null){
-        tags.add(attributes['strIBA']);         
+         this.tags.add(attributes['strIBA']);         
       }
       if(attributes['strAlcoholic']!=null){
-         tags.add(attributes['strAlcoholic']);
+         this.tags.add(attributes['strAlcoholic']);
       }
       if(attributes['strGlass']!=null){
-         tags.add(attributes['strGlass']);
+         this.tags.add(attributes['strGlass']);
       }
 
       for (var i = 1; i < 16; i++) {
@@ -53,7 +54,8 @@ class Drink {
         {
           break;
         }
-        ingerdients[ingredient] = measure ;
+        this.ingerdients[ingredient] = measure ;
       }
+      this.isUpdated = true;
   }
 }
