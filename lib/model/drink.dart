@@ -8,7 +8,8 @@ class Drink {
   String instruction;
   bool isUpdated = false;
   List<String> tags = new List<String>();
-  Map<String,String> ingerdients = new Map<String,String>();
+  List<String> ingerdients = new List<String>();
+  List<String> measures = new List<String>();
 
   Drink();
 
@@ -54,7 +55,8 @@ class Drink {
         {
           break;
         }
-        this.ingerdients[ingredient] = measure ;
+        this.ingerdients.add(ingredient);
+        this.measures.add(measure);
       }
       this.isUpdated = true;
   }
